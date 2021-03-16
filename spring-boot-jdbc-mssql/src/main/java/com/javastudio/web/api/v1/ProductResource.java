@@ -1,4 +1,4 @@
-package com.javastudio.web;
+package com.javastudio.web.api.v1;
 
 import com.javastudio.api.ProductService;
 import com.javastudio.api.exceptions.NoDataFoundException;
