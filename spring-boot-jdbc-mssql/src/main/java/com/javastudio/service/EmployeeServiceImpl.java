@@ -16,6 +16,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findAll() {
-        return jdbcTemplate.query("select EmployeeID, Code, Status, * from HCM3.Employee", new EmployeeMapper());
+        return jdbcTemplate.query("select top 200 EmployeeID, Code, Status, * from HCM3.Employee", new EmployeeMapper());
     }
 }
