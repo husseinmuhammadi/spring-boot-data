@@ -21,7 +21,7 @@ public class EmployeeResource {
         return ResponseEntity.ok(employeeService.findAll());
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<Employee> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(employeeService.findById(id));
     }
