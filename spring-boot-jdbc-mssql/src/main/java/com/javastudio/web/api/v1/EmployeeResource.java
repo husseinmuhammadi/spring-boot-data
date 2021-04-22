@@ -26,7 +26,12 @@ public class EmployeeResource {
     @GetMapping
     public ResponseEntity<List<Employee>> findAll(@RequestParam("code") Optional<String> code) {
         logger.info("code: {}", code);
-        return ResponseEntity.ok(employeeService.findAll());
+        List<Employee> employees;
+        if (code.isPresent())
+            employees = employeeService.findByCode(code.get());
+        else
+            employees = employeeService.findAll();
+        return ResponseEntity.ok(employees);
     }
 
     @GetMapping("/{id}")

@@ -20,8 +20,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findByCode(String code) {
-        return jdbcTemplate.queryForObject("select EmployeeID, Code, Status, * from HCM3.Employee where code = ?", new Object[]{code}, new EmployeeMapper());
+    public List<Employee> findByCode(String code) {
+        return jdbcTemplate.query("select EmployeeID, Code, Status, * from HCM3.Employee where code = ?", new Object[]{code}, new EmployeeMapper());
     }
 
     @Override

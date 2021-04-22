@@ -7,7 +7,7 @@ import java.util.List;
 public interface EmployeeService {
     List<Employee> findAll();
 
-    Employee findByCode(String code);
+    List<Employee> findByCode(String code);
 
     Employee findById(Long id);
 }
