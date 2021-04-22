@@ -30,7 +30,7 @@ public class PayStubServiceImpl implements PayStubService {
     }
 
     @Override
-    public Employee findById(Long id) {
-        return jdbcTemplate.queryForObject("select PayCalcID, IssueYearMonth, EmployeeRef from HCM3.PayCalc where PayCalcID = ?", new Object[]{id}, new EmployeeMapper());
+    public PayStub findById(Long id) {
+        return jdbcTemplate.queryForObject("select PayCalcID, IssueYearMonth, EmployeeRef from HCM3.PayCalc where PayCalcID = ?", new Object[]{id}, new PayStubMapper());
     }
 }

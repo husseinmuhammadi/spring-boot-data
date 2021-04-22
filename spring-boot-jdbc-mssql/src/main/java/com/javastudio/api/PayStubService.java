@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface PayStubService {
     List<PayStub> findAll(Optional<Long> employeeId);
 
-    Employee findById(Long id);
+    PayStub findById(Long id);
 }
