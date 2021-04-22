@@ -14,11 +14,14 @@ import java.util.Optional;
 @RequestMapping("/api/v1/employees")
 public class EmployeeResource {
 
-    @Autowired
-    private Logger logger;
+    private final Logger logger;
 
     @Autowired
     private EmployeeService employeeService;
+
+    public EmployeeResource(Logger logger) {
+        this.logger = logger;
+    }
 
     @GetMapping
     public ResponseEntity<List<Employee>> findAll(@RequestParam("code") Optional<String> code) {
