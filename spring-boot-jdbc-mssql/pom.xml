@@ -62,4 +62,32 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <active.profiles>dev</active.profiles>
+            </properties>
+        </profile>
+        <profile>
+            <id>stage</id>
+            <properties>
+                <active.profiles>stage</active.profiles>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <active.profiles>prod</active.profiles>
+                <db.server.name>${M2_HOME}</db.server.name>
+                <db.name>${M2_HOME}</db.name>
+                <db.username>${M2_HOME}</db.username>
+                <db.password>${M2_HOME}</db.password>
+            </properties>
+        </profile>
+    </profiles>
 </project>

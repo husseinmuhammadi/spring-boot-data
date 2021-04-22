@@ -4,6 +4,8 @@ server:
     context-path: /
 
 spring:
+  profiles:
+    active: @active.profiles@
   datasource:
     url: jdbc:sqlserver://localhost;databaseName=Test01
     username: sa
@@ -13,3 +15,20 @@ spring:
 logging:
   level:
     org.springframework.jdbc.core.JdbcTemplate: debug
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:sqlserver://localhost;databaseName=Test01
+    username: sa
+    password: 123456
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:sqlserver://192.168.10.68\SG2012;databaseName=firmco_sg3
+    username: Shasta
+    password: Hello@#@#123456
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
