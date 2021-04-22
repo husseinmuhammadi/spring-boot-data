@@ -4,9 +4,7 @@ import com.javastudio.api.EmployeeService;
 import com.javastudio.dto.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,4 +20,15 @@ public class EmployeeResource {
     public ResponseEntity<List<Employee>> findAll() {
         return ResponseEntity.ok(employeeService.findAll());
     }
+
+    @GetMapping
+    public ResponseEntity<Employee> findById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(employeeService.findById(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<Employee> findByCode(@RequestParam("code") String code) {
+        return ResponseEntity.ok(employeeService.findByCode(code));
+    }
+
 }
