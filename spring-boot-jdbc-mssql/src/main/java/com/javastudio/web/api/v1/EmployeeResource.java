@@ -1,7 +1,9 @@
 package com.javastudio.web.api.v1;
 
 import com.javastudio.api.EmployeeService;
+import com.javastudio.api.PayStubService;
 import com.javastudio.dto.Employee;
+import com.javastudio.dto.PayStub;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,9 @@ public class EmployeeResource {
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private PayStubService payStubService;
 
     public EmployeeResource(Logger logger) {
         this.logger = logger;
@@ -37,5 +42,10 @@ public class EmployeeResource {
     @GetMapping("/{id}")
     public ResponseEntity<Employee> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(employeeService.findById(id));
+    }
+
+    @GetMapping("/{id}/paystubs")
+    public ResponseEntity<List<PayStub>> findAllPayStubs(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(payStubService.findAll(Optional.of(id)));
     }
 }
