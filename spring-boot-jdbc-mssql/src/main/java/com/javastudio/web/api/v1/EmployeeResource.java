@@ -48,4 +48,9 @@ public class EmployeeResource {
     public ResponseEntity<List<PayStub>> findAllPayStubs(@PathVariable("id") Long id) {
         return ResponseEntity.ok(payStubService.findAll(Optional.of(id)));
     }
+
+    @GetMapping("/{id}/paystubs/issue-years")
+    public ResponseEntity<List<String>> findAllYearsWithPayStub(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(payStubService.findIssueYears(Optional.of(id)));
+    }
 }
