@@ -14,6 +14,8 @@ public class EmployeeMapper implements RowMapper<Employee> {
         employee.setId(resultSet.getLong("EmployeeID"));
         employee.setCode(resultSet.getString("Code"));
         employee.setStatus(resultSet.getLong("Status"));
+        employee.setFirstName(resultSet.getString("FirstName"));
+        employee.setLastName(resultSet.getString("LastName"));
         return employee;
     }
 }
