@@ -26,10 +26,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee findById(Long id) {
-        return jdbcTemplate.queryForObject("select EmployeeID, Code, Status, * from HCM3.Employee where EmployeeID = ?", new Object[]{id}, new EmployeeMapper());
+        return jdbcTemplate.queryForObject("select e.EmployeeID, e.Code, e.Status, p.FirstName, p.LastName from HCM3.Employee e join GNR3.Party p on e.PartyRef = p.PartyID where e.EmployeeID = ?", new Object[]{id}, new EmployeeMapper());
     }
-
-
 
 
 }
