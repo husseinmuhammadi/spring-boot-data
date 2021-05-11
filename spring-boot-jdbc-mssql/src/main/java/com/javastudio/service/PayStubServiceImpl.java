@@ -31,7 +31,7 @@ public class PayStubServiceImpl implements PayStubService {
         if (employeeId.isEmpty())
             return Collections.emptyList();
 
-        String query = "select distinct (pc.IssueYearMonth/100) IssueYear from HCM3.PayCalc pc where pc.EmployeeRef = ? order by (pc.IssueYearMonth/100);";
+        String query = "select distinct (pc.IssueYearMonth/100) IssueYear from HCM3.PayCalc pc and IssueYearMonth >= 140000 where pc.EmployeeRef = ? order by (pc.IssueYearMonth/100);";
         return jdbcTemplate.query(query, new Object[]{employeeId.get()}, new PayStubYearsMapper());
     }
 
