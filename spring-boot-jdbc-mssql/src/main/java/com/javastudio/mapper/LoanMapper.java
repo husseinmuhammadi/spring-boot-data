@@ -13,6 +13,7 @@ public class LoanMapper implements RowMapper<Loan> {
         loan.setTitle(resultSet.getString("Title"));
         loan.setPrincipal(resultSet.getLong("LoanAmount"));
         loan.setOutstanding(resultSet.getLong("Remainder"));
+        loan.setInstallment(resultSet.getLong("Amount"));
         loan.setPaymentYearMonth(resultSet.getString("PaymentYearMonth"));
         loan.setEmployeeId(resultSet.getLong("EmployeeRef"));
         return loan;
