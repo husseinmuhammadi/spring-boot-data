@@ -1,8 +1,10 @@
 package com.javastudio.web.api.v1;
 
+import com.javastudio.api.AttendanceService;
 import com.javastudio.api.EmployeeService;
 import com.javastudio.api.LoanService;
 import com.javastudio.api.PayStubService;
+import com.javastudio.dto.Attendance;
 import com.javastudio.dto.Employee;
 import com.javastudio.dto.Loan;
 import com.javastudio.dto.PayStub;
@@ -28,6 +30,9 @@ public class EmployeeResource {
 
     @Autowired
     private LoanService loanService;
+
+    @Autowired
+    private AttendanceService attendanceService;
 
     public EmployeeResource(Logger logger) {
         this.logger = logger;
@@ -57,6 +62,11 @@ public class EmployeeResource {
     @GetMapping("/{id}/loans")
     public ResponseEntity<List<Loan>> findAllLoans(@PathVariable("id") Long id) {
         return ResponseEntity.ok(loanService.findAll(Optional.of(id)));
+    }
+
+    @GetMapping("/{id}/attendance/{year}/{month}")
+    public ResponseEntity<List<Attendance>> findAllAttendance(@PathVariable("id") Long id, @PathVariable("year") String year, @PathVariable("month") String month) {
+        return ResponseEntity.ok(attendanceService.findAll(Optional.of(id), Optional.of(year + month)));
     }
 
     @GetMapping("/{id}/paystubs/issue-years")
