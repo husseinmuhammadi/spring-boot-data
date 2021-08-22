@@ -28,7 +28,7 @@ spring:
 spring:
   profiles: prod
   datasource:
-    url: jdbc:sqlserver://192.168.10.68\SG2012;databaseName=firmco_sg3
-    username: shasta_report
-    password: Hello@#@#1234567
+    url: jdbc:sqlserver://srv-rahkaran;databaseName=firmco_sg3
+    username: Shasta
+    password: Hello@#@#123456
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
